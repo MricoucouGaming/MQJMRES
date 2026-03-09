@@ -120,7 +120,7 @@ body.sidebar-open .overlay { opacity: 1; pointer-events: auto; }
   transition: max-height 360ms ease, opacity 260ms ease, padding 260ms ease;
   text-align: center;
 }
-.submenu.open { max-height: 1000px; opacity: 1; padding-top: 8px; }
+.submenu.open { max-height: 2500px; opacity: 1; padding-top: 8px; }
 
 .submenu-btn {
   width: 90%;
@@ -445,4 +445,3 @@ body.sidebar-open .hamburger {
     display: none;
 
 }
-
