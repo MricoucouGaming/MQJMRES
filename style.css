@@ -20,11 +20,11 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   background-image: url(fond.png);
-  background-attachment: fixed; /* L'image ne bouge pas au scroll */
-  background-size: cover;       /* L'image prend tout l'écran */
+  background-attachment: fixed;
+  background-size: cover;
   background-position: center, top;
   margin: 0;
-  padding: 0;
+  padding: 30px 15px;
   background-color: transparent;
 }
 
@@ -120,7 +120,7 @@ body.sidebar-open .overlay { opacity: 1; pointer-events: auto; }
   transition: max-height 360ms ease, opacity 260ms ease, padding 260ms ease;
   text-align: center;
 }
-.submenu.open { max-height: 20000px; opacity: 1; padding-top: 8px; }
+.submenu.open { max-height: 2500px; opacity: 1; padding-top: 8px; }
 
 .submenu-btn {
   width: 90%;
@@ -432,17 +432,43 @@ h1, h2, h3 {
   font-weight: 700;
 }
 
+/* ════════════════════════════════════════════════════════════════
+   🎯 SÉPARATION NETTE ENTRE CONTAINER ET FOND
+   ════════════════════════════════════════════════════════════════ */
+
 .container {
-    background-color: #d1d5d8;
-    max-width: 1000px;
+    background-color: #ffffff;        /* ← BLANC PUR */
+    max-width: 900px;
     margin: 0 auto;
+    padding: 40px 30px;
     display: block; 
     overflow: hidden;
     position: relative;
+    
+    /* ✨ La magie : bordure + ombre épaisse = séparation NETTE */
+    border: 3px solid #ddd;           /* ← Bordure grise claire */
+    border-radius: 12px;              /* ← Coins arrondis */
+    box-shadow: 
+        0 0 0 2px #fff,               /* ← Filet blanc intérieur */
+        0 15px 35px rgba(0, 0, 0, 0.25);  /* ← Ombre importante */
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Media Query pour mobile
+   ════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px 10px;
+    }
+    
+    .container {
+        padding: 25px 15px;
+        border-width: 2px;
+        max-width: 100%;
+    }
 }
 
 body.sidebar-open .hamburger {
     display: none;
-
 }
-
