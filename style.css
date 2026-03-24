@@ -252,7 +252,6 @@ a {
   transition: background 200ms ease;
 }
 
-
 .back-btn:hover {
   background: var(--accent-2);
 }
