@@ -1,5 +1,6 @@
 * { 
   box-sizing: border-box; margin: 0; padding: 0; 
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
 }
 
 *::selection{
@@ -29,11 +30,11 @@ body {
 }
 
 @keyframes titleColorCycle {
-  0%   { color: #008080; }
+  0%   { color: #048ea3; }
   25%  { color: #4169E1; }
-  50%  { color: #00BFFF; }
+  50%  { color: #41a1e1; }
   75%  { color: #4169E1; }
-  100% { color: #008080; }
+  100% { color: #048ea3; }
 }
 .title { 
   animation: titleColorCycle var(--title-cycle) linear infinite; 
@@ -510,4 +511,14 @@ button:hover {
   font-style: italic;
   line-height: 1.8;
   text-align: center;
+}
+
+.erreur {
+  color: #1e7780;
+}
+
+.erreur-btn {
+  background-color: #bbb;
+  color: #1e7780;
+  text-decoration: none;
 }
