@@ -45,11 +45,27 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
       const submenu = btn.nextElementSibling;
       if (!submenu) return;
+
       const willOpen = !submenu.classList.contains('open');
       submenu.classList.toggle('open', willOpen);
       btn.classList.toggle('active', willOpen);
-      document.querySelectorAll('.submenu').forEach(s => { if (s !== submenu) s.classList.remove('open'); });
-      document.querySelectorAll('.submenu-btn').forEach(b => { if (b !== btn) b.classList.remove('active'); });
+
+      // Ferme uniquement les frères (siblings) au même niveau, pas les parents
+      const parentItem = btn.closest('.menu-item');
+      const parentSubmenu = parentItem ? parentItem.parentElement : null;
+
+      if (parentSubmenu) {
+        parentSubmenu.querySelectorAll(':scope > .menu-item > .submenu').forEach(s => {
+          if (s !== submenu) {
+            s.classList.remove('open');
+          }
+        });
+        parentSubmenu.querySelectorAll(':scope > .menu-item > .submenu-btn').forEach(b => {
+          if (b !== btn) {
+            b.classList.remove('active');
+          }
+        });
+      }
     });
   });
 
@@ -92,12 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('sidebar-search');
   if (!searchInput) return;
 
-  // Panneau de résultats inséré juste après la barre de recherche, avant le reste
   const resultsPanel = document.createElement('div');
   resultsPanel.id = 'search-results';
   searchInput.closest('.sidebar-search-wrapper').insertAdjacentElement('afterend', resultsPanel);
 
-  // Collecte tous les liens persos une seule fois au chargement
   const allLinks = Array.from(sidebar.querySelectorAll('.submenu a:not(.sushiscan)'))
     .filter(a => a.textContent.trim() !== '' && a.getAttribute('href') !== '');
 
@@ -151,5 +165,3 @@ function ecrire() {
   }
 }
 ecrire();
-
-

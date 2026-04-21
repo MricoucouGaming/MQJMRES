@@ -608,3 +608,7 @@ button:hover {
   opacity: 0.5;
   font-style: italic;
 }
+
+.sub {
+  background-color: darkgray;
+}
